@@ -28,7 +28,7 @@ services:
       - desenv-network
       
   mongodb-server:
-    image: mongo
+    image: mongo:704
     restart: always
     ports:
       - "27017:27017"    
