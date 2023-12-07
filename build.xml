@@ -22,6 +22,7 @@
 		<echo>Inicia o ambiente</echo>
 		<exec executable="docker-compose" dir="desenv">
 			<arg value="up" />
+			<arg value="--detach"/>
 		</exec>
 
 	</target>
