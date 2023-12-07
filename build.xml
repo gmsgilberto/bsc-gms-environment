@@ -1,0 +1,22 @@
+<project name="Wolf Stream" default="nop" basedir=".">
+
+	<description>
+        Monta o ambiente de desenvolvimento para a aplicação Wolfstream
+    </description>
+
+	<target name="nop">
+		<echo>Defina o ambiente que deve ser criado: desenv, quality, homolog ou production</echo>
+	</target>
+
+	<target name="desenv">
+		<exec executable="docker-compose" dir="desenv">
+			<arg value="down" />
+		</exec>
+	</target>
+
+	<target name="clean" description="Remove os containers criados">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+	
+</project>

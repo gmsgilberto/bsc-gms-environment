@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<groupId>br.com.gms.bsc</groupId>
+	<artifactId>bsc-gms-environment</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+
+	<developers>
+		<developer>
+			<id>gmsgilberto</id>
+			<name>Gilberto Matias de Souza</name>
+			<email>bsc-gilbertosouza@gmail.com</email>
+			<organization>Bird Sky Company</organization>
+			<organizationUrl></organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/gmsgilberto/bsc-gms-environment.git</connection>
+		<developerConnection>scm:git:https://github.com/gmsgilberto/bsc-gms-environment.git</developerConnection>
+		<url>https://github.com/gmsgilberto/bsc-gms-environment</url>
+	</scm>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+
+</project>

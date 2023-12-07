@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  wolfstreamdb:
+    build: 
+      context: ./wolfstreamdb
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: WOLFSTREAMDB
+      POSTGRES_USER: WOLFSTREAMUSER-DES
+      POSTGRES_PASSWORD: WOLFSTREAMPASS-DES
+    ports:
+      - "5435:5432"
+    networks:
+      - context-network
+
+networks:
+  context-network:
+    driver: bridge
+  
