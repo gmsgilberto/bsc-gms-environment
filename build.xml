@@ -9,14 +9,22 @@
 	</target>
 
 	<target name="desenv">
+		<echo>Remove os containers antigos</echo>
 		<exec executable="docker-compose" dir="desenv">
 			<arg value="down" />
 		</exec>
+		
+		<echo>Compila novo ambiente</echo>
+		<exec executable="docker-compose" dir="desenv">
+			<arg value="build" />
+		</exec>
+
+		<echo>Inicia o ambiente</echo>
+		<exec executable="docker-compose" dir="desenv">
+			<arg value="up" />
+		</exec>
+
 	</target>
 
-	<target name="clean" description="Remove os containers criados">
-		<delete dir="${build}" />
-		<delete dir="${dist}" />
-	</target>
 	
 </project>
