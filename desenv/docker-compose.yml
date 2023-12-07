@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: WOLFSTREAMUSER-DES
       POSTGRES_PASSWORD: WOLFSTREAMPASS-DES
     ports:
-      - "5435:5432"
+      - "5432:5432"
     networks:
       - context-network
     volumes: 
@@ -19,7 +19,7 @@ services:
     image: redis:6.2-alpine
     restart: always
     ports:
-      - '6389:6379'
+      - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning
     volumes: 
       - cache-redis:/data
