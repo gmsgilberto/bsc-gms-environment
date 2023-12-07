@@ -37,12 +37,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root      
     networks:
       - desenv-network
+    volumes:
+      - mongodbdisk:/data/db
 
 volumes:
   cache-redis:
     driver: local
   wolfstreamdb:
     driver: local
+  mongodbdisk:
+    driver: local
+
 
 networks:
   desenv-network:
