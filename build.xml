@@ -12,8 +12,24 @@
 		<echo>Remove os containers antigos</echo>
 		<exec executable="docker-compose" dir="desenv">
 			<arg value="down" />
+			<arg value="--remove-orphans"/>
 		</exec>
 		
+		<echo>Exclui os containers</echo>
+		<exec executable="docker" dir="desenv">
+			<arg value="container"/>
+			<arg value="prune"/>
+			<arg value="-f"/>
+		</exec>
+		
+		<echo>Exclui os volumes</echo>
+		<exec executable="docker" dir="desenv">
+			<arg value="volume"/>
+			<arg value="prune"/>
+			<arg value="--remove-orphans"/>
+			<arg value="-f"/>
+		</exec>
+
 		<echo>Compila novo ambiente</echo>
 		<exec executable="docker-compose" dir="desenv">
 			<arg value="build" />
@@ -22,7 +38,6 @@
 		<echo>Inicia o ambiente</echo>
 		<exec executable="docker-compose" dir="desenv">
 			<arg value="up" />
-			<arg value="--detach"/>
 		</exec>
 
 	</target>

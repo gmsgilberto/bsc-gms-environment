@@ -1,4 +1,4 @@
-FROM postgres:15.1-alpine
+FROM postgres:16.1
 LABEL author="Gilberto Matias de souza"
 LABEL description="Banco de dados do Sistema Wolfstream"
 LABEL version="1.0"
