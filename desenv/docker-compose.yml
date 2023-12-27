@@ -13,7 +13,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - desenv-network
+      - bsc-gms-network
     volumes: 
       - wolfstreamdb:/var/lib/postgresql
           
@@ -26,7 +26,7 @@ services:
     volumes: 
       - cache-redis:/data
     networks:
-      - desenv-network
+      - bsc-gms-network
 
   mongodb-sever:
     image: mongo:7.0.4
@@ -37,7 +37,7 @@ services:
       - mongodatadb:/data/db
       - mongoconfigdb:/data/configdb
     networks:
-      - desenv-network
+      - bsc-gms-network
       
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.3
@@ -48,7 +48,7 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - desenv-network
+      - bsc-gms-network
 
   kafka-broker:
     image: confluentinc/cp-kafka:7.4.3
@@ -64,7 +64,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker:9092,PLAINTEXT_INTERNAL://localhost:19092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
-      - desenv-network
+      - bsc-gms-network
 
 volumes:
   cache-redis:
@@ -78,6 +78,6 @@ volumes:
     
 
 networks:
-  desenv-network:
+  bsc-gms-network:
     driver: bridge
   

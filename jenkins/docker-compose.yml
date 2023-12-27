@@ -14,7 +14,7 @@ services:
       - /home/huupv/data/jenkins:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - desenv-network
+      - bsc-gms-network
       
 volumes:
   cache-redis:
@@ -28,5 +28,5 @@ volumes:
     
 
 networks:
-  desenv-network:
+  bsc-gms-network:
     driver: bridge  
