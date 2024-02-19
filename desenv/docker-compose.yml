@@ -2,22 +2,22 @@ version: '3.9'
 
 services:
 
-  wolfstreamdb:
+  postgredb:
     build: 
-      context: ./wolfstreamdb
+      context: ./postgredb
       dockerfile: Dockerfile
     environment:
-      POSTGRES_DB: WOLFSTREAMDB
-      POSTGRES_USER: WOLFSTREAMUSER-DES
-      POSTGRES_PASSWORD: WOLFSTREAMPASS-DES
+      POSTGRES_DB: postgredb
+      POSTGRES_USER: USER-DES
+      POSTGRES_PASSWORD: PASS@01
     ports:
       - "5432:5432"
     networks:
-      - bsc-gms-network
+      - app-network
     volumes: 
-      - wolfstreamdb:/var/lib/postgresql
+      - postgredb:/var/lib/postgresql
           
-  redis-sever:
+  redis-cache:
     image: redis:6.2-alpine
     restart: always
     ports:
@@ -26,9 +26,9 @@ services:
     volumes: 
       - cache-redis:/data
     networks:
-      - bsc-gms-network
+      - app-network
 
-  mongodb-sever:
+  mongodb:
     image: mongo:7.0.4
     restart: always
     ports:
@@ -37,7 +37,7 @@ services:
       - mongodatadb:/data/db
       - mongoconfigdb:/data/configdb
     networks:
-      - bsc-gms-network
+      - app-network
       
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.3
@@ -48,7 +48,7 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - bsc-gms-network
+      - app-network
 
   kafka-broker:
     image: confluentinc/cp-kafka:7.4.3
@@ -64,12 +64,12 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker:9092,PLAINTEXT_INTERNAL://localhost:19092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
-      - bsc-gms-network
+      - app-network
 
 volumes:
   cache-redis:
     driver: local
-  wolfstreamdb:
+  postgredb:
     driver: local
   mongodatadb:
     driver: local
@@ -78,6 +78,6 @@ volumes:
     
 
 networks:
-  bsc-gms-network:
+  app-network:
     driver: bridge
   
