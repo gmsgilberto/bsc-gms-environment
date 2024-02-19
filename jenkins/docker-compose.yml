@@ -10,22 +10,14 @@ services:
     ports:
       - '18080:8080'
       - '15000:5000'
+    environment:
+      USER_ROOT: admin
+      USER_PASS: admin@01
     volumes:
-      - /home/huupv/data/jenkins:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./volume/var/jenkins_home:/var/jenkins_home
+      - ./volume/var/run/docker.sock:/var/run/docker.sock
     networks:
       - app-network
-      
-volumes:
-  cache-redis:
-    driver: local
-  postgredb:
-    driver: local
-  mongodatadb:
-    driver: local
-  mongoconfigdb:
-    driver: local
-    
 
 networks:
   app-network:
